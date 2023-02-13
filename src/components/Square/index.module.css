@@ -1,0 +1,10 @@
+.sq {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    position: relative;
+}
+
+.active {
+    background-color: #0075D8;
+}
