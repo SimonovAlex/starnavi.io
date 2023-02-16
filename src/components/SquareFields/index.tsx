@@ -1,4 +1,4 @@
-import React, {FC, Fragment, SyntheticEvent} from 'react';
+import React, {FC, Fragment} from 'react';
 import Square from "../Square";
 import styles from "./index.module.css";
 import {Coordinates} from "../../types";
@@ -25,25 +25,19 @@ const SquareFields: FC<Props> = ({
   const row = (i: number) => {
     return (
       Array(size).fill(false).map((_, j) => <Fragment key={`${i} ${j}`}>
-        <Square col={j}
-                row={i}
+        <Square
                 isActive={isActive(i, j)}
+                onHover={() => onHover({
+                  col: j,
+                  row: i,
+                })}
         />
       </Fragment>)
     )
   }
 
-  const hoverHandle = (e: SyntheticEvent) => {
-    //@ts-ignore
-    const col = +e.target.dataset.col;
-    //@ts-ignore
-    const row = +e.target.dataset.row;
-
-    onHover({col, row});
-  }
-
   return (
-    <div className={styles.sq} onMouseOver={hoverHandle}>
+    <div className={styles.sq}>
       {Array(size).fill(false).map((_, i) => <div className={styles.row} key={i}>{row(i)}</div>)}
     </div>
   );

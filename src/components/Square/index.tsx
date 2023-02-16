@@ -1,17 +1,16 @@
 import React, {FC} from 'react';
 import styles from "./index.module.css";
 import {concatClassName} from "../../utils";
-import {Coordinates} from "../../types";
 
-interface Props extends Coordinates{
-  isActive: boolean
+interface Props {
+  isActive: boolean;
+  onHover: () => void;
 }
 
-const Square: FC<Props> = ({
-  col, row, isActive
+const Square: FC<Props> = ({isActive, onHover
                            }) => {
   return (
-    <div className={concatClassName([styles.sq, isActive && styles.active])} data-col={col} data-row={row} />
+    <div onMouseOver={onHover} className={concatClassName([styles.sq, isActive && styles.active])}/>
   );
 };
 

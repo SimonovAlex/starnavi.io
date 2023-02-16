@@ -1,4 +1,4 @@
-import React, {SyntheticEvent, useEffect, useMemo, useRef, useState} from 'react';
+import React, {ChangeEvent, useEffect, useMemo, useRef, useState} from 'react';
 import SquareFields from "./components/SquareFields";
 import useFetchData from "./API/useFetchData";
 import {Complexity} from "./API/types";
@@ -36,8 +36,9 @@ function App() {
     hoveredMatrix.current = emptyArrayFromSize(selectedSize);
   }, [selectedSize])
 
-  const handleChange = (e: SyntheticEvent) => {
-    //@ts-ignore
+  const handleChange = (e: ChangeEvent<HTMLSelectElement> ) => {
+
+
     setSelectedSize(+e.target.value);
   }
 
