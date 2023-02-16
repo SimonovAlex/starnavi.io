@@ -41,10 +41,6 @@ function App() {
     setSelectedSize(+e.target.value);
   }
 
-
-  const handleClick = () => {
-  }
-
   const handleHover = useMemo(() => (({row, col}: Coordinates) => {
     if(hoveredMatrix.current[row][col]){
       const filtered = hovered.filter(v => v.col !== col || v.row !== row);
@@ -74,13 +70,8 @@ function App() {
             <select className={styles.select} onChange={handleChange} placeholder={selectPlaceholder}
                     disabled={!!error || !isLoaded}>
               {!!data && data.map(d => <option value={d.field} key={d.field}>{d.name}</option>)}
-
             </select>
-            <button className={styles.start} onClick={handleClick}>
-              start
-            </button>
           </div>
-
           <SquareFields size={selectedSize} onHover={handleHover} hovered={hoveredMatrix.current}/>
         </div>
       </div>
