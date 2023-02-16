@@ -1,4 +1,4 @@
-import React, {FC, Fragment} from 'react';
+import React, {FC, Fragment, memo} from 'react';
 import Square from "../Square";
 import styles from "./index.module.css";
 import {Coordinates} from "../../types";
@@ -16,7 +16,7 @@ const SquareFields: FC<Props> = ({
                                  }) => {
 
   const isActive = (i: number, j: number) => {
-    if (hovered.length) {
+    if (hovered.length && hovered[i]) {
       return hovered[i][j]
     }
     return false
@@ -43,4 +43,4 @@ const SquareFields: FC<Props> = ({
   );
 };
 
-export default SquareFields;
+export default memo(SquareFields);

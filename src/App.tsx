@@ -34,11 +34,10 @@ function App() {
 
   useEffect(() => {
     hoveredMatrix.current = emptyArrayFromSize(selectedSize);
+    setHovered([]);
   }, [selectedSize])
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement> ) => {
-
-
     setSelectedSize(+e.target.value);
   }
 
@@ -46,8 +45,7 @@ function App() {
   const handleClick = () => {
   }
 
-  const handleHover = ({row, col}: Coordinates) => {
-
+  const handleHover = useMemo(() => (({row, col}: Coordinates) => {
     if(hoveredMatrix.current[row][col]){
       const filtered = hovered.filter(v => v.col !== col || v.row !== row);
       setHovered(filtered);
@@ -57,7 +55,7 @@ function App() {
     }
 
     hoveredMatrix.current[row][col] = !hoveredMatrix.current[row][col];
-  }
+  }), [setHovered, hovered])
 
   return (
     <>
