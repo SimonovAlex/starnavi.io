@@ -1,0 +1,15 @@
+.select{
+    width: 100px;
+}
+
+.controllers{
+    margin-bottom: 20px;
+}
+
+.wrapper{
+    display: flex;
+}
+
+.leftBar{
+    margin: 0 30px;
+}
